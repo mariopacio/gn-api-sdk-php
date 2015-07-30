@@ -8,26 +8,42 @@ use Gerencianet\Gerencianet;
 $file = file_get_contents(__DIR__.'/../config.json');
 $options = json_decode($file, true);
 
-$params = ['id' => 0];
-
 $paymentToken = 'payment_token';
 
-$customer = ['name' => 'Gorbadoc Oldbuck', 'cpf' => '04267484171' , 'phone_number' => '5144916523', 'email' => 'oldbuck@gerencianet.com.br',
-'birth' => '1977-01-15', ];
-
-$billingAddress = [
-  'street' => 'Street 3',
-  'number' => 10,
-  'neighborhood' => 'Bauxita',
-  'zipcode' => '35400000',
-  'city' => 'Ouro Preto',
-  'state' => 'MG',
+$customer = [
+    'name' => 'Gorbadoc Oldbuck',
+    'cpf' => '04267484171',
+    'phone_number' => '5144916523',
+    'email' => 'oldbuck@gerencianet.com.br',
+    'birth' => '1977-01-15'
 ];
 
-$body = ['payment' => ['credit_card' => [
-                                'billing_address' => $billingAddress,
-                                'payment_token' => $paymentToken,
-                                'customer' => $customer, ]]];
+$billingAddress = [
+    'street' => 'Street 3',
+    'number' => 10,
+    'neighborhood' => 'Bauxita',
+    'zipcode' => '35400000',
+    'city' => 'Ouro Preto',
+    'state' => 'MG'
+];
+
+$creditCard = [
+    'billing_address' => $billingAddress,
+    'payment_token' => $paymentToken,
+    'customer' => $customer
+];
+
+$payment = [
+    'credit_card' => $creditCard
+];
+
+$body = [
+    'payment' => $payment
+];
+
+$params = [
+    'id' => 0
+];
 
 try {
     $api = new Gerencianet($options);

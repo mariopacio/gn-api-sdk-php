@@ -8,8 +8,14 @@ use Gerencianet\Gerencianet;
 $file = file_get_contents(__DIR__.'/../config.json');
 $options = json_decode($file, true);
 
-$params = ['id' => 0];
-$body = ['custom_id' => 'Product 0001', 'notification_url' => 'http://domain.com/notification'];
+$body = [
+	'custom_id' => 'Product 0001',
+	'notification_url' => 'http://domain.com/notification'
+];
+
+$params = [
+	'id' => 0
+];
 
 try {
     $api = new Gerencianet($options);

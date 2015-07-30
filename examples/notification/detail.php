@@ -8,7 +8,9 @@ use Gerencianet\Gerencianet;
 $file = file_get_contents(__DIR__.'/../config.json');
 $options = json_decode($file, true);
 
-$params = ['token' => 'token'];
+$params = [
+	'token' => 'token'
+];
 
 try {
     $api = new Gerencianet($options);

@@ -7,7 +7,9 @@ use Gerencianet\Gerencianet;
 
 $options = json_decode(__DIR__.'/../config.json', true);
 
-$params = ['id' => 0];
+$params = [
+	'id' => 0
+];
 
 try {
     $api = new Gerencianet($options);

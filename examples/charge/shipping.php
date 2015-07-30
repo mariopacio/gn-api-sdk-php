@@ -8,10 +8,29 @@ use Gerencianet\Gerencianet;
 $file = file_get_contents(__DIR__.'/../config.json');
 $options = json_decode($file, true);
 
-$items = [['name' => 'Item 1', 'amount' => 1, 'value' => 1000]];
-$shippings = [['name' => 'My Shipping', 'value' => 2000]];
+$item_1 = [
+	'name' => 'Item 1',
+	'amount' => 1,
+	'value' => 1000
+];
 
-$body = ['items' => $items, 'shippings' => $shippings];
+$items = [
+	$item_1
+];
+
+$shipping_1 = [
+	'name' => 'My Shipping',
+	'value' => 2000
+];
+
+$shippings = [
+	$shipping_1
+];
+
+$body = [
+	'items' => $items,
+	'shippings' => $shippings
+];
 
 try {
     $api = new Gerencianet($options);

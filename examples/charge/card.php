@@ -8,12 +8,15 @@ use Gerencianet\Gerencianet;
 $file = file_get_contents(__DIR__.'/../config.json');
 $options = json_decode($file, true);
 
-$params = ['id' => 0];
-
 $paymentToken = 'payment_token';
 
-$customer = ['name' => 'Gorbadoc Oldbuck', 'cpf' => '04267484171' , 'phone_number' => '5144916523', 'email' => 'oldbuck@gerencianet.com.br',
-'birth' => '1977-01-15', ];
+$customer = [
+    'name' => 'Gorbadoc Oldbuck',
+    'cpf' => '04267484171',
+    'phone_number' => '5144916523',
+    'email' => 'oldbuck@gerencianet.com.br',
+    'birth' => '1977-01-15'
+];
 
 $billingAddress = [
   'street' => 'Street 3',
@@ -24,10 +27,24 @@ $billingAddress = [
   'state' => 'MG',
 ];
 
-$body = ['payment' => ['credit_card' => ['installments' => 1,
-                                'billing_address' => $billingAddress,
-                                'payment_token' => $paymentToken,
-                                'customer' => $customer, ]]];
+$creditCard = [
+    'installments' => 1,
+    'billing_address' => $billingAddress,
+    'payment_token' => $paymentToken,
+    'customer' => $customer
+];
+
+$payment = [
+    'credit_card' => $creditCard
+];
+
+$body = [
+    'payment' => $payment
+];
+
+$params = [
+    'id' => 0
+];
 
 try {
     $api = new Gerencianet($options);
