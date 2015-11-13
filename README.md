@@ -58,9 +58,9 @@ $api = new Gerencianet($options);
 To change the environment to production, just set the third sandbox to false:
 ```php
 $options = [
-  'client_id': 'client_id',
-  'client_secret': 'client_secret',
-  'sandbox': false
+  'client_id' => 'client_id',
+  'client_secret' => 'client_secret',
+  'sandbox' => false
 ];
 
 $api = new Gerencianet($options);
